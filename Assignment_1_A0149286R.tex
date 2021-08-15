@@ -113,8 +113,8 @@ Row player will not choose B since
 \[u_r(B,\vec{q})<0.5u_r(B,\vec{q})+0.5u_r(B,\vec{q})\]
 Column player will not choose M since
 \[u_c(\vec{p},M)<0.5u_c(\vec{p},L)+0.5u_c(\vec{p},R)\]
-
-From the remaining choices,
+From the remaining choices - $(T,C)$ for the row player,
+and $(L,R)$ for the column player,
 \[u_r(\vec{p}_r,(1,0))=10p+(1-p)=9p+1\]
 \[u_r(\vec{p}_r,(0,1))=2p+3(1-p)=3-p\]
 \[9p+1=3-p\]
@@ -133,5 +133,28 @@ From the remaining choices,
 
 %======================================
 \section{Two Player Normal Form Game}
+Suppose not, that the expected utility from playing $b_1$ or $b_2$ is different.
+WLOG, assume playing $b_1$ earns a better expected utility. That is,
+\[u_2(\vec{p},b_1) > u_2(\vec{p},b_2)\]
+Suppose $\vec{q}^* = (q_1,q_2,...,q_i,...,q_n)$.
+We also have the maximum utility being
+\[u_2(\vec{p},\vec{q}^*)=\sum_i q_i u_2(\vec{p},b_i)
+=q_1 u_2(\vec{p},b_1) + q_2 u_2(\vec{p},b_2)
++ \sum_{i>2} q_i u_2(\vec{p},b_i)\]
+But since $b_1$ earns better utility, then
+\[q_2 u_2(\vec{p},b_1) > q_2 u_2(\vec{p},b_2)\]
+\[(q_1 + q_2) u_2(\vec{p},b_1) > 
+q_1 u_2(\vec{p},b_1) + q_2 u_2(\vec{p},b_2)\]
+Then we have a mixed strategy $\vec{q}^{**}=(q_1 + q_2,0,...)$
+that has a better expected utility
+\[ u_2(\vec{p},\vec{q}^{**})
+=(q_1 + q_2) u_2(\vec{p},b_1) + \sum_{i>2} q_i u_2(\vec{p},b_i)
+> u_2(\vec{p},\vec{q}^*)\]
+A contradiction, since
+\[u_2(\vec{p},\vec{q}^*) = \max_{\vec{q}\in\Delta_2}u_2(\vec{p},\vec{q})\]
+The same argument can be used if $b_2$ instead earns a better expected utility.
+Thus, the supposition is false, and player 2 earns the same expected utility
+from playing $b_1$ or $b_2$.
+\[u_2(\vec{p},b_1) = u_2(\vec{p},b_2)\]
 
 \end{document}
