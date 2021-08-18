@@ -137,16 +137,17 @@ and $\{L,R\}$ for the column player,
 Suppose not, that the expected utility from playing $b_1$ or $b_2$ is different.
 WLOG, assume playing $b_1$ earns a better expected utility. That is,
 \[u_2(\vec{p},b_1) > u_2(\vec{p},b_2)\]
-Suppose $\vec{q}^* = (q_1,q_2,...,q_i,...,q_n)$.
+Let $\vec{q}^* = (q_1,q_2,...,q_i,...,q_n)$.
 We also have the maximum utility being
 \[u_2(\vec{p},\vec{q}^*)=\sum_i q_i u_2(\vec{p},b_i)
 =q_1 u_2(\vec{p},b_1) + q_2 u_2(\vec{p},b_2)
 + \sum_{i>2} q_i u_2(\vec{p},b_i)\]
-But since $b_1$ earns better utility, then
+But since $b_1$ earns better utility, and $q_1,q_2>0$, then
+\[u_2(\vec{p},b_1) > u_2(\vec{p},b_2)\]
 \[q_2 u_2(\vec{p},b_1) > q_2 u_2(\vec{p},b_2)\]
 \[(q_1 + q_2) u_2(\vec{p},b_1) > 
 q_1 u_2(\vec{p},b_1) + q_2 u_2(\vec{p},b_2)\]
-Then we have a mixed strategy $\vec{q}^{**}=(q_1 + q_2,0,...)$
+Then we have a mixed strategy $\vec{q}^{**}=(q_1 + q_2,0,..., q_n)$
 that has a better expected utility
 \[ u_2(\vec{p},\vec{q}^{**})
 =(q_1 + q_2) u_2(\vec{p},b_1) + \sum_{i>2} q_i u_2(\vec{p},b_i)
