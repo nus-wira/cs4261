@@ -30,7 +30,7 @@ Column player chooses L since
 Column does not choose B since
 \[u_c(\vec{p},B)<u_c(\vec{p},A)\]
 Row does not choose S or U since
-\[u_r(S,\vec{q})<=u_r(U,\vec{q})<u_r(V,\vec{q})\]
+\[u_r(S,\vec{q})\leq u_r(U,\vec{q})<u_r(V,\vec{q})\]
 \begin{itemize}
     \item Row player chooses $T \implies$ Column player chooses $A$
     \item Row player chooses $V \implies$ Column player chooses $C \implies$
@@ -69,8 +69,14 @@ Row does not choose S or U since
 
 \subsection{Pure Strategy Nash Equilibria}
 Two exist:
-\[\vec{a}_1=(10,accept),u_P(\vec{a}_1)=10,u_R(\vec{a}_1)=0\]
-\[\vec{a}_2=(10,reject),u_P(\vec{a}_2)=u_R(\vec{a}_2)=0\]
+\[\vec{a}_1=(10,accept)\]
+\[\vec{a}_2=(10,reject)\]
+\begin{itemize}
+    \item $P$ chooses $i<10 \implies R$ chooses $accept \implies P$ chooses $i=10$
+    \item $P$ chooses $i=10 \implies R$ is indifferent
+    \item $R$ chooses $accept \implies P$ chooses $i=10$
+    \item $R$ chooses $reject \implies P$ is indifferent $\implies P$ chooses $i=10$
+\end{itemize}
 
 \subsection{Behaviour}
 No. The \textit{proposer} may want to choose $i$ such that 
