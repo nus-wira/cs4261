@@ -9,7 +9,7 @@
 \section{Two Firms, Same Good}
 
 \subsection{Strategy Profile}
-Let $f(q_1,q_2)=u_1(q_1,q_2)+u_2(q_1,q_2)$.
+Let $f(q_1,q_2)=u_1(q_1,q_2)+u_2(q_1,q_2)$. Assume $a>q_1+q_2$.
 \begin{equation}
 \begin{aligned}
     f(q_1,q_2)
@@ -41,8 +41,19 @@ Since
     = -2 < 0
 \end{aligned}
 \end{equation}
-Hence, the line in $(3)$ is the maximum.
-Any strategy profile $(q_1,q_2)$ where
-\[q_1+q_2=\frac{a-c}{2}\]
+Hence, the line in $(3)$ is the maximum.\\
+If $a\leq p_1+p_2$, then 
+\[f(q_1,q_2)=-c(q_1+q_2)\leq 0\]
+Trivially, the strategy profile
+\[(q_1,q_2)=(0,0)\]
+maximizes the joint profit (none).\\
+Thus, the strategy profile
+\[(q_1,q_2) =
+    \begin{cases}
+        s\cdot(1,-1)+(0,\frac{a-c}{2}),s\in\mathbb{R}^+ 
+        & \text{if } a>q_1+q_2\\
+        (0,0), & \text{otherwise}
+    \end{cases}
+\]
 will maximize the joint profit.
 \end{document}
