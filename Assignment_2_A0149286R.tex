@@ -1,0 +1,48 @@
+\input{preamble.tex}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 2}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{Two Firms, Same Good}
+
+\subsection{Strategy Profile}
+Let $f(q_1,q_2)=u_1(q_1,q_2)+u_2(q_1,q_2)$.
+\begin{equation}
+\begin{aligned}
+    f(q_1,q_2)
+    &= q_1\cdot p(q_1,q_2) - cq_1 + q_2\cdot p(q_1,q_2) - cq_2\\
+    &= (q_1+q_2)(p(q_1,q_2)-c)\\
+    &= (q_1+q_2)(a-(q_1+q_2)-c)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+    \frac{\partial f}{\partial q_1} &= \frac{\partial f}{\partial q_2} 
+    \quad\text{(by symmetry)}\\
+    &= (a-(q_1+q_2)-c)-(q_1+q_2)\\
+    &= a-2(q_1+q_2)-c\\
+\end{aligned}
+\end{equation}
+At the critical point,
+\[\frac{\partial f}{\partial q_1}= \frac{\partial f}{\partial q_2} =0\]
+Thus,
+\begin{equation}
+    q_1+q_2=\frac{a-c}{2}
+\end{equation}
+Since
+\begin{equation}
+\begin{aligned}
+    \frac{\partial^2 f}{\partial^2 q_1} 
+    = \frac{\partial^2 f}{\partial^2 q_2} 
+    = \frac{\partial^2 f}{\partial q_1\partial q_2} 
+    = -2 < 0
+\end{aligned}
+\end{equation}
+Hence, the line in $(3)$ is the maximum.
+Any strategy profile $(q_1,q_2)$ where
+\[q_1+q_2=\frac{a-c}{2}\]
+will maximize the joint profit.
+\end{document}
