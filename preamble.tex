@@ -14,6 +14,7 @@
 \usepackage{color}
 \usepackage{xurl}
 \usepackage{amssymb}
+\usepackage{multirow,array}
 \urlstyle{sf}
 
 \oddsidemargin=0.15in
@@ -62,6 +63,7 @@
 \newtheorem{claim}[theorem]{Claim}
 \newtheorem{fact}[theorem]{Fact}
 \newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{case}[theorem]{Case}
 
 \newcommand{\qed}{\rule{7pt}{7pt}}
 \newcommand{\dis}{\mathop{\mbox{\rm d}}\nolimits}
@@ -75,6 +77,8 @@
 \newcommand{\ihat}{\hat{\imath}}
 \newcommand{\jhat}{\hat{\jmath}}
 \newcommand{\abs}[1]{\mathify{\left| #1 \right|}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
 
 \newenvironment{proof}{\noindent{\bf Proof}\hspace*{1em}}{\qed\bigskip}
 \newenvironment{proof-sketch}{\noindent{\bf Sketch of Proof}\hspace*{1em}}{\qed\bigskip}

@@ -9,7 +9,7 @@
 \section{Two Firms, Same Good}
 
 \subsection{Strategy Profile}
-Let $f(q_1,q_2)=u_1(q_1,q_2)+u_2(q_1,q_2)$. Assume $a>q_1+q_2$.
+Let $f(q_1,q_2)=u_1(q_1,q_2)+u_2(q_1,q_2)$. Assume $a\geq q_1+q_2$.
 \begin{equation}
 \begin{aligned}
     f(q_1,q_2)
@@ -42,18 +42,216 @@ Since
 \end{aligned}
 \end{equation}
 Hence, the line in $(3)$ is the maximum.\\
-If $a\leq p_1+p_2$, then 
-\[f(q_1,q_2)=-c(q_1+q_2)\leq 0\]
-Trivially, the strategy profile
-\[(q_1,q_2)=(0,0)\]
-maximizes the joint profit (none).\\
+It can be shown that the assumption $a\geq q_1+q_2$ will always be true.
+\[a \geq \frac{a-c}{2}\]
+\[\frac{a}{2} \geq -\frac{c}{2}\]
+which is always true as $a>c>0$.
 Thus, the strategy profile
-\[(q_1,q_2) =
-    \begin{cases}
-        s\cdot(1,-1)+(0,\frac{a-c}{2}),s\in\mathbb{R}^+ 
-        & \text{if } a>q_1+q_2\\
-        (0,0), & \text{otherwise}
-    \end{cases}
-\]
+\[(q_1,q_2) =s\cdot(1,-1)+(0,\frac{a-c}{2}),s\in\mathbb{R}^+\]
 will maximize the joint profit.
+
+\subsection{Nash Equilibrium}
+Assume that $q_1+q_2\leq a$.
+Since 
+\[BR_1(q_2) = \max_{q_1\in\Delta_1}u_1(q_1,q_2)\]
+it suffices to find where $\frac{\partial u_1}{\partial q_1} = 0$,
+with $\frac{\partial^2 u_1}{\partial q_1^2} = -2 < 0$.
+\[u_1(q_1,q_2) = q_1(a-(q_1+q_2)-c)\]
+\begin{equation}
+\begin{aligned}
+    \frac{\partial u_1}{\partial q_1} &= (a-(q_1+q_2)-c) - q_1\\
+    &= -2q_1 + a-q_2-c
+\end{aligned}
+\end{equation}
+Thus,
+\[-2q_1 + a-q_2-c=0\]
+\[q_1=\frac{a-c-q_2}{2}\]
+Then
+\[BR_1(q_2)=\frac{a-c-q_2}{2}\]
+Similarly,
+\[BR_2(q_1)=\frac{a-c-q_1}{2}\]
+Then in the Nash equilibrium, we have
+\begin{align}
+    q_1=\frac{a-c-q_2}{2}\\
+    q_2=\frac{a-c-q_1}{2}
+\end{align}
+Solving,
+\[q_1=\frac{a-c-\frac{a-c-q_1}{2}}{2}\]
+\[q_1=\frac{a-c+q_1}{4}\]
+\[q_1=\frac{a-c}{3}\]
+By symmetry,
+\[q_1=q_2=\frac{a-c}{3}\]
+It can be shown that the assumption $a\geq q_1+q_2$ will always be true.
+\[a \geq \frac{2(a-c)}{3}\]
+\[\frac{a}{3} \geq -\frac{c}{3}\]
+which is always true as $a>c>0$.
+The Nash equilibrium is
+\[(q_1,q_2)=\left(\frac{a-c}{3},\frac{a-c}{3}\right)\]
+
+\newpage
+\subsection{Amount}
+
+\subsubsection{Good}
+\paragraph{a}
+\[q_1+q_2=\frac{a-c}{2}\]
+\paragraph{b}
+\[q_1+q_2=\frac{2(a-c)}{3}\]
+
+\subsubsection{Price}
+\paragraph{a}
+\[p(q_1,q_2)=a-\frac{a-c}{2}=\frac{a+c}{2}\]
+\paragraph{b}
+\[p(q_1,q_2)=a-\frac{2(a-c)}{3}=\frac{a+2c}{3}\]
+
+\subsubsection{Utilities}
+\paragraph{a}
+For $s\in\mathbb{R}^+, q_1+q_2 \leq a$,
+\[u_1(q_1,q_2)=s\cdot\left(\frac{a+c}{2}-c\right)
+=s\cdot\left(\frac{a-c}{2}\right)\]
+\[u_2(q_1,q_2)
+=\left(-s+\frac{a-c}{2}\right)\cdot\left(\frac{a+c}{2}-c\right)
+=\frac{(a-c)^2}{4}-s\cdot\left(\frac{a-c}{2}\right)\]
+
+\paragraph{b}
+\[u_1(q_1,q_2)=\left(\frac{a-c}{3}\right)\cdot\left(\frac{a+2c}{3}-c\right)
+=\frac{(a-c)^2}{9}\]
+\[u_2(q_1,q_2)=\frac{(a-c)^2}{9}\]
+
+%======================================
+\newpage
+\section{Proving Nash Equilibria}
+\subsection{Dominate}
+True.\\
+\begin{proof}
+Suppose not, that action $a$ dominates action $b$ for player $i$,
+and action $b$ is played with probability $p_b>0$ in some Nash Equilbrium.
+Since $a$ strictly dominates $b$,
+\begin{equation}
+    \forall \vec{p}_{-i}\in\Delta(A_{-i}): 
+    u_i(\vec{p}_{-i},a)> u_i(\vec{p}_{-i},b)
+\end{equation}
+By definition of Nash equilibrium,
+\begin{equation}
+    \forall i\in N,\forall \vec{q}_i\in\Delta(A_i):
+    u_i(\vec{p})\geq u_i(\vec{p}_{-i},\vec{q}_i)
+\end{equation}
+Also, $\exists \vec{p}_i^*\in\Delta(A_i)$ 
+such that $p_b^* > 0$ for $\vec{p}_i^*$, which is part of a Nash equilibrium.
+Let the probability of action $a$ being played in $\vec{p}_i^*$ be $p_a^*$.\\
+Let $\vec{p}^*$ be the Nash equlibrium strategy profile for which 
+$\vec{p}_i^*$ is the strategy profile for player $i$.\\
+Let $\vec{p}^{**}$ then be the strategy profile where we set
+$p_a^{**}=p_a^*+p_b^*$ and $p_b^{**}=0$ in $\vec{p}_i^{**}$, ceteris paribus.\\
+From $(8)$, we have that
+\begin{equation}
+    (p_a^*+p_b^*)u_i(\vec{p}_{-i},a) 
+    > p_a^* u_i(\vec{p}_{-i},a) + p_b^* (\vec{p}_{-i},b)
+\end{equation}
+Then,
+\begin{equation}
+    u_i(\vec{p}^{**}) > u_i(\vec{p}^*)
+\end{equation}
+Combining $(9),(11)$, with $\vec{p}^*$ being a Nash equilibrium,
+\begin{equation}
+    u_i(\vec{p}^{**}) > u_i(\vec{p}^*) \geq u_i(\vec{p}^{**})
+\end{equation}
+A contradiction, so $b$ must be played with probability 0 
+in any Nash equilibrium.
+\end{proof}
+
+\subsection{Others}
+False.\\
+Consider the following game.
+\begin{table}[h]
+\setlength{\extrarowheight}{2pt}
+\begin{tabular}{*{4}{c|}}
+    \multicolumn{2}{c}{} & \multicolumn{2}{c}{Player $Column$}\\\cline{3-4}
+    \multicolumn{1}{c}{} &  & $L$  & $R$ \\\cline{2-4}
+    \multirow{2}*{Player $Row$}  & $T$ & $(1,1)$ & $(0,0)$ \\\cline{2-4}
+    & $B$ & $(0,0)$ & $(1,1)$ \\\cline{2-4}
+\end{tabular}
+\end{table}
+
+\noindent We have pure strategy Nash equilibria with player $i$ being the row player, 
+\[\vec{p}^*,\vec{q}^*=(T,L),(B,R)\]
+but the strategies
+\[(\vec{p}_{-i}^*,\vec{q}_i^*)=(B,L)\]
+\[(\vec{q}_{-i}^*,\vec{p}_i^*)=(T,R)\]
+are not Nash equilibria.
+
+\newpage
+\subsection{Best Response, Mixed Strategy}
+True.\\
+\begin{proof}
+The best response is
+\[BR_i(\vec{p}_{-i})=\argmax_{\vec{q}\in\Delta_i}u_i(\vec{p}_{-i},\vec{q})\]
+\begin{equation}
+    \forall c\in BR_i(\vec{p}_{-i}),\forall\vec{q}\in\Delta_i: 
+    u_i(\vec{p}_{-i},c)\geq u_i(\vec{p}_{-i},\vec{q})
+\end{equation}
+Since $a,b\in A_i$ are both best responses,
+\begin{equation}
+    \max_{\vec{q}\in\Delta_i}u_i(\vec{p}_{-i},\vec{q})
+    =u_i(\vec{p}_{-i},a)=u_i(\vec{p}_{-i},b)
+\end{equation}
+Let $\vec{p}_i^*$ be a strategy by player $i$ where
+actions $a,b$ are played with $\gamma,1-\gamma$ probability 
+respectively, $0<\gamma < 1$. 
+For $\vec{p}_i^*$ to be a best response, it suffices to show that 
+\[u_i(\vec{p}_{-i},\vec{p}_i^*) 
+= \max_{\vec{q}\in\Delta_i}u_i(\vec{p}_{-i},\vec{q})\]
+\begin{equation}
+\begin{aligned}
+    u_i(\vec{p}_{-i},\vec{p}_i^*) 
+    &= \gamma u_i(\vec{p}_{-i},a) + (1-\gamma) u_i(\vec{p}_{-i},b)\\
+    &= \gamma u_i(\vec{p}_{-i},a) + (1-\gamma) u_i(\vec{p}_{-i},a)
+    \quad\text{(from (14))}\\
+    &= u_i(\vec{p}_{-i},a)\\
+    &= \max_{\vec{q}\in\Delta_i}u_i(\vec{p}_{-i},\vec{q})
+    \quad\text{(from (14))}
+\end{aligned}
+\end{equation}
+Thus, we have $\vec{p}_i^*$ as a best response.
+\end{proof}
+
+%======================================
+\newpage
+\section{Nash's Theorem}
+
+\subsection{Brouwer's Fixed Point Theorem}
+
+Consider the function $g(x)=f(x)-x$.
+Since $f(x)$ is continuous, so is $g(x)$.
+\begin{claim}
+For any continuous function $f:[0,1]\rightarrow [0,1]$,
+    \[\exists x_0\in [0,1], g(x_0) = f(x_0)-x = 0\]
+\end{claim}
+\begin{proof}
+    If $f(0)=0$ or $f(1)=1$, then $g(0)=0$ or $g(1)=1$.
+    Otherwise, we have $f(0)\neq 0$ and $f(1) \neq 1$.
+    Since $f(x)\in [0,1]$, then $f(0) > 0,f(1) < 1$, so
+    \[g(0) = f(0)-0>0\]
+    \[g(1) = f(1)-1<0\]
+    \[g(1)<0<g(0)\]
+    Then, by the Intermediate Value Theorem,
+    \[\exists x_0 \in (0,1), g(x_0) = 0\]
+    In all cases,
+    \[\exists x_0 \in [0,1], g(x_0) = 0\]
+\end{proof}\\
+Thus,
+\[\exists x_0 \in [0,1], f(x_0)=x_0\]
+
+\subsection{Non-Empty, Convex, and Compact Domain}
+
+
+\subsection{Mixed Strategy}
+
+
+\subsection{Continuous}
+
+
+\subsection{Use}
+
+
+
 \end{document}
