@@ -47,7 +47,9 @@ It can be shown that the assumption $a\geq q_1+q_2$ will always be true.
 \[\frac{a}{2} \geq -\frac{c}{2}\]
 which is always true as $a>c>0$.
 Thus, the strategy profile
-\[(q_1,q_2) =s\cdot(1,-1)+(0,\frac{a-c}{2}),s\in\mathbb{R}^+\]
+\[(q_1,q_2) 
+=s\cdot\left(\frac{a-c}{2},0\right)+(1-s)\cdot\left(0,\frac{a-c}{2}\right),
+s\in[0,1]\]
 will maximize the joint profit.
 
 \subsection{Nash Equilibrium}
@@ -241,17 +243,157 @@ For any continuous function $f:[0,1]\rightarrow [0,1]$,
 Thus,
 \[\exists x_0 \in [0,1], f(x_0)=x_0\]
 
+\newpage
 \subsection{Non-Empty, Convex, and Compact Domain}
 
+\subsubsection{Non-Empty}
+For all action spaces $\Delta(A_i)$, choose $\vec{p}_i\in\Delta(A_i)$.
+$p_i$ exists, since the action spaces are not empty.
+Thus, $(\vec{p}_1,\vec{p}_2,\dots,\vec{p}_n)\in\Delta(A)$ and $\Delta(A)$ is non-empty.
 
+\subsubsection{Convex}
+Let $\vec{a},\vec{b}\in \Delta(A), 
+\vec{a}=(\vec{a}_1,...,\vec{a}_n),\vec{b}=(\vec{b}_1,...\vec{b}_n)$
+Define 
+\[\vec{c}=t\vec{a}+(1-t)\vec{b}
+=(t\vec{a}_1+(1-t)\vec{b}_1,...,t\vec{a}_n+(1-t)\vec{b}_n)\]
+$\Delta(A)$ is convex if,
+\[\forall \vec{a},\vec{b}\in \Delta(A),
+\forall t\in[0,1]:\vec{c}=t\vec{a}+(1-t)\vec{b}\in\Delta(A)\]
+It suffices to show that $\vec{c}_i\in\Delta(A_i)$
+for an arbitrary player $i$.
+We have $\vec{c}_i\in\Delta(A_i)$ if, 
+given player $i$ has $m$ possible actions,
+\[\vec{c}_i\in[0,1]^m \wedge sum\{\vec{c}_i\}=1\]
+For any action $j$ with probability 
+$p_{aj},p_{bj}\in[0,1]$ in $\vec{a}_i,\vec{b}_i$ respectively,
+\[t\cdot p_{aj} + (1-t) \cdot p_{bj} \in [0,1]\]
+So,
+\[\vec{c}_i\in[0,1]^m\]
+Now,
+\begin{equation}
+\begin{aligned}
+    sum\{\vec{c}_i\} &= sum\{t\vec{a}_i+(1-t)\vec{b}_i\}\\
+    &= t\cdot sum\{\vec{a}_i\} + (1-t)\cdot sum\{\vec{b}_i\}\\
+    &= t\cdot 1 + (1-t) \cdot 1\\
+    &= 1
+\end{aligned}
+\end{equation}
+Thus, we have $\vec{c}_i\in\Delta(A_i)$ for an arbitrary player $i$,
+and thus, $\Delta(A)$ is convex.
+
+\subsubsection{Compact}
+Take any arbitrary probability distribution over player $i$'s actions,
+$\Delta(A_i)$. Since it is a probability space over a finite domain,
+then $\Delta(A_i)$ is compact. Thus, $\forall i\in N,\Delta(A_i)$ is compact.\\
+We then prove by induction that 
+$\Delta(A)=\Delta(A_1)\times\dots\times\Delta(A_n)$ is compact.\\
+\begin{proof}
+    Base Case $(n=1)$. $\Delta(A_1)$ is compact.\\
+    Induction Case. Suppose $\Delta(A_1)\times\dots\times\Delta(A_k)$ is compact.
+    Then 
+    \[\Delta(A_1)\times\dots\times\Delta(A_k)\times\Delta(A_{k+1})\]
+    is also compact.
+\end{proof}\\
+Thus, $\Delta(A)$ is compact.\\
+It is shown that $\Delta(A)$ is non-empty, convex, and compact.
+
+\newpage
 \subsection{Mixed Strategy}
+
+To prove that $s_i(\vec{p}) = (s_i(\vec{p},a))_{a\in A_i}$
+is a mixed strategy over $A_i$, it suffices to show that,
+\[(\forall a\in A_i : s_i(\vec{p},a)\in[0,1]) \wedge 
+\sum_{a\in A_i} s_i(\vec{p},a)=1\]
+We first prove $\forall a\in A_i : s_i(\vec{p},a)\in[0,1]$.
+It can be easily seen that $G_i(\vec{p},a) \geq 0$,
+and thus $s_i(\vec{p},a)\geq 0$. We also have
+\[p_i(a)+G_i(\vec{p},a) \leq 1 +G_i(\vec{p},a) 
+\leq 1 +\sum_{a\in A_i} G_i(\vec{p},a)\]
+Thus, $s_i(\vec{p},a)\leq 1$. 
+\[\forall a\in A_i : s_i(\vec{p},a)\in[0,1]\]
+\begin{equation}
+\begin{aligned}
+    \sum_{a\in A_i} s_i(\vec{p},a) 
+    &= \sum_{a\in A_i} 
+    \frac{p_i(a)+G_i(\vec{p},a)}{1 +\sum_{a\in A_i} G_i(\vec{p},a)}\\
+    &= \frac{\sum_{a\in A_i} \left(p_i(a)+G_i(\vec{p},a)\right)}
+    {1 +\sum_{a\in A_i} G_i(\vec{p},a)}\\
+    &= \frac{\sum_{a\in A_i} p_i(a)+\sum_{a\in A_i}G_i(\vec{p},a)}
+    {1 +\sum_{a\in A_i} G_i(\vec{p},a)}\\
+    &= \frac{1 +\sum_{a\in A_i} G_i(\vec{p},a)}
+    {1 +\sum_{a\in A_i} G_i(\vec{p},a)}\\
+    &= 1
+\end{aligned}
+\end{equation}
+Thus, $s_i(\vec{p}) = (s_i(\vec{p},a))_{a\in A_i}$
+is a mixed strategy over $A_i$. 
+Then, 
+\[\forall i\in N:s_i(\vec{p})\in\Delta(A_i)\]
+Then $(s_1(\vec{p}),\dots,s_n(\vec{p}))\in\Delta(A)$.
+Then we have 
+\[\beta : \Delta(A) \rightarrow \Delta(A)\] 
+i.e. the function $\beta$ maps from $\Delta(A)$ to itself.
 
 
 \subsection{Continuous}
+It suffices to show that $s_i(\vec{p},a)$ is continuous, as this results in
+$s_i(\vec{p})$ and subsequently $\beta$ being continuous as well.
+\begin{claim}
+    $s_i(\vec{p},a)$ is continuous
+\end{claim}
+\begin{proof}
+    Given that $\vec{p}\in\Delta(A)$, 
+    which is a non-empty, convex, and compact domain,
+    then $p_i(a)$ is continuous.
+    $u_i(\vec{p}_{-i},a),u_i(\vec{p})$ are also continuous, 
+    which are utility functions with
+    \[u_i(\vec{p})=\sum_{\vec{a}\in A}u_i(\vec{a})\Pr[\vec{a}]\]
+    where $u_i(\vec{a})$ is a constant that is trivially continuous.
+    Then,
+    \[G_i(\vec{p},a)=\max\{u_i(\vec{p}_{-i},a)-u_i(\vec{p}),0\}\]
+    is continuous, and so
+    \[p_i(a)+G_i(\vec{p},a)\]
+    \[1+\sum_{a\in A_i}G_i(\vec{p},a)\]
+    are continuous as well. 
+    Then $s_i(\vec{p},a)$ is continuous.
+\end{proof}\\
+Thus, $\beta$ is continuous.
 
+\newpage
+\subsection{Nash Equilibrium}
 
-\subsection{Use}
-
+We have the non-empty, convex, compact domain $D=\Delta(A)$,
+and the continuous function $f=\beta$.
+By Brouwer's Fixed Point Thoerem,
+\begin{corollary}
+    \[\exists \vec{p}^*\in\Delta(A), \beta(\vec{p}^*)=\vec{p}^*\]
+\end{corollary}
+\begin{lemma}
+    \[\forall i\in N,\forall \vec{p}\in\Delta(A) : 
+    u_i(\vec{p}_{-i},s_i(\vec{p})) \geq u_i(\vec{p})\]
+\end{lemma}
+\begin{proof}
+    Notice that $\forall a\in A_i$,
+    \[u_i(\vec{p}_{-i},a)\geq u_i(p) \Leftrightarrow 
+    s_i(\vec{p},a) \geq p_i(a)\]
+    Then 
+    \begin{equation}
+    \begin{aligned}
+    u_i(\vec{p}_{-i},a) 
+    &= \sum_{a\in A_i} s_i(\vec{p},a)\cdot u_i(\vec{p}_{-i},a)\\
+    &\geq \sum_{a\in A_i} p_i(a)\cdot u_i(\vec{p}_{-i},a)\\
+    &= u_i(\vec{p})
+    \end{aligned}
+    \end{equation}
+\end{proof}\\
+By \textbf{Corollary 3} we have for some $\vec{p}^*\in\Delta(A)$,
+\[\forall i\in N : \beta(\vec{p}^*)_{-i}=\vec{p}_{-i}^*\]
+Then we can set $\beta(\vec{p}^*)=\vec{p}^*
+=(\vec{p}_{-i},s_i(\vec{p}))$, and by \textbf{Lemma 4},
+\[\forall i\in N, \forall \vec{q}_i\in\Delta(A_i) :
+u_i(\vec{p}^*)\geq u_i(\vec{p}_{-i}^*,\vec{q}_i)\]
+In other words, $\vec{p}^*$ is a Nash equilibrium.
 
 
 \end{document}
