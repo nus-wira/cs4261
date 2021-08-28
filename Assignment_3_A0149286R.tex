@@ -1,0 +1,60 @@
+\input{preamble.tex}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 3}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{Expected Loss}
+\subsection{Greedy Algorithm}
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+    \hline
+    $t=$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 
+    \hline
+    $\min_i L_i^{t-1}$  & 0 & 0 & 0 & 0 & 1 & 2 & 3 & 3 \\  
+    $S_{t-1}$  & $\{1,2,3\}$ & $\{3\}$ & $\{3\}$ & $\{3\}$ 
+    & $\{3\}$ & $\{3\}$ & $\{2,3\}$ & $\{2\}$ \\  
+    $l^t$ & 1 & 0 & 0 & 1 & 1 & 1 & 0 & 0 \\
+    \hline
+\end{tabular}
+\[L^8=\sum_{t=1}^{8}l^t=4\]
+
+\subsection{Randomized Greedy Algorithm}
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+    \hline
+    $t=$ & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 
+    \hline
+    $\min_i L_i^{t-1}$  & 0 & 0 & 0 & 0 & 1 & 2 & 3 & 3 \\  
+    $S_{t-1}$  & $\{1,2,3\}$ & $\{3\}$ & $\{3\}$ & $\{3\}$ 
+    & $\{3\}$ & $\{3\}$ & $\{2,3\}$ & $\{2\}$ \\  
+    $l^t$ & 2/3 & 0 & 0 & 1 & 1 & 1 & 1/2 & 0 \\
+    \hline
+\end{tabular}
+\[L^8=\sum_{t=1}^{8}l^t=\frac{25}{6}\]
+\subsection{Multiplicative Weights Algorithm}
+
+\begin{tabular}{ |c|c|c|c|c| }
+    \hline
+    $t=$ & 1 & 2 & 3 & 4 \\ 
+    \hline
+    $w_i^t$  & $(1,1,1)$ & $(1/2,1/2,1)$ & $(1/4,1/4,1)$ & $(1/4,1/8,1)$ \\
+    $W^t$ & 3 & 2 & 3/2 & 11/8\\
+    $p_i^t$ & $(1/3,1/3,1/3)$ & $(1/4,1/4,1/2)$ & $(1/6,1/6,2/3)$ 
+    & $(2/11,1/11,8/11)$ \\  
+    $l^t$ & 2/3 & 1/2 & 1/3 & 8/11 \\
+    \hline
+\end{tabular}\\
+\begin{tabular}{ |c|c|c|c|c| }
+    \hline
+    $t=$ & 5 & 6 & 7 & 8 \\ 
+    \hline
+    $w_i^t$ & $(1/4,1/8,1/2)$ & $(1/8,1/8,1/4)$ & $(1/16,1/8,1/8)$ & $(1/16,1/8,1/16)$ \\
+    $W^t$ & 7/8 & 1/2 & 5/16 & 1/4 \\
+    $p_i^t$ & $(2/7,1/7,4/7)$ & $(1/4,1/4,1/2)$ 
+    & $(1/5,2/5,2/5)$ & $(1/4,1/2,1/4)$ \\  
+    $l^t$ & 6/7 & 3/4 & 2/5 & 1/4 \\
+    \hline
+\end{tabular}
+\[L^8=\sum_{t=1}^{8}l^t=\frac{3453}{770}\approx 4.484\]
+\end{document}
