@@ -107,12 +107,13 @@ The Nash equilibrium is
 
 \subsubsection{Utilities}
 \paragraph{a}
-For $s\in\mathbb{R}^+, q_1+q_2 \leq a$,
-\[u_1(q_1,q_2)=s\cdot\left(\frac{a+c}{2}-c\right)
-=s\cdot\left(\frac{a-c}{2}\right)\]
+For $s\in[0,1]$,
+\[u_1(q_1,q_2)
+=s\cdot\left(\frac{a-c}{2}\right)\cdot\left(\frac{a+c}{2}-c\right)
+=s\cdot\frac{(a-c)^2}{4}\]
 \[u_2(q_1,q_2)
-=\left(-s+\frac{a-c}{2}\right)\cdot\left(\frac{a+c}{2}-c\right)
-=\frac{(a-c)^2}{4}-s\cdot\left(\frac{a-c}{2}\right)\]
+=(1-s)\cdot\left(\frac{a-c}{2}\right)\cdot\left(\frac{a+c}{2}-c\right)
+=(1-s)\cdot\frac{(a-c)^2}{4}\]
 
 \paragraph{b}
 \[u_1(q_1,q_2)=\left(\frac{a-c}{3}\right)\cdot\left(\frac{a+2c}{3}-c\right)
@@ -179,7 +180,8 @@ Consider the following game.
 but the strategies
 \[(\vec{p}_{-i}^*,\vec{q}_i^*)=(B,L)\]
 \[(\vec{q}_{-i}^*,\vec{p}_i^*)=(T,R)\]
-are not Nash equilibria.
+are not Nash equilibria. 
+A similar case occurs if player $i$ is the column player.
 
 \newpage
 \subsection{Best Response, Mixed Strategy}
@@ -312,6 +314,7 @@ and thus $s_i(\vec{p},a)\geq 0$. We also have
 \leq 1 +\sum_{a\in A_i} G_i(\vec{p},a)\]
 Thus, $s_i(\vec{p},a)\leq 1$. 
 \[\forall a\in A_i : s_i(\vec{p},a)\in[0,1]\]
+Next,
 \begin{equation}
 \begin{aligned}
     \sum_{a\in A_i} s_i(\vec{p},a) 
@@ -375,12 +378,12 @@ By Brouwer's Fixed Point Thoerem,
 \end{lemma}
 \begin{proof}
     Notice that $\forall a\in A_i$,
-    \[u_i(\vec{p}_{-i},a)\geq u_i(p) \Leftrightarrow 
-    s_i(\vec{p},a) \geq p_i(a)\]
-    Then 
+    \[u_i(\vec{p}_{-i},a) > u_i(\vec{p}) \Leftrightarrow 
+    s_i(\vec{p},a) > p_i(a)\]
+    In other words, better actions will be weighted more. Then 
     \begin{equation}
     \begin{aligned}
-    u_i(\vec{p}_{-i},a) 
+    u_i(\vec{p}_{-i},s_i(\vec{p})) 
     &= \sum_{a\in A_i} s_i(\vec{p},a)\cdot u_i(\vec{p}_{-i},a)\\
     &\geq \sum_{a\in A_i} p_i(a)\cdot u_i(\vec{p}_{-i},a)\\
     &= u_i(\vec{p})
