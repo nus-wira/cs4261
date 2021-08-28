@@ -57,4 +57,67 @@
     \hline
 \end{tabular}
 \[L^8=\sum_{t=1}^{8}l^t=\frac{3453}{770}\approx 4.484\]
+
+%======================================
+\newpage
+\section{Regret, Small Number of Rounds}
+
+%======================================
+\newpage
+\section{Routing Game}
+
+\subsection{Optimal Flow}
+The social cost $c$ is
+\[c=\varepsilon+(1-\varepsilon)^{p+1}\]
+Then
+\begin{equation}
+\begin{aligned}
+    \frac{dc}{d\varepsilon}=1-(p+1)(1-\varepsilon)^p\\
+    \frac{dc}{d\varepsilon}=p(p+1)(1-\varepsilon)^{p-1} > 0
+\end{aligned}
+\end{equation}
+We have a minimum when $\frac{dc}{d\varepsilon}=0$.
+\[1-(p+1)(1-\varepsilon_0)^p=0\]
+\[(1-\varepsilon_0)^p=\frac{1}{p+1}\]
+\begin{equation}
+    \varepsilon_0=1-\frac{1}{\sqrt[p]{p+1}}
+\end{equation}
+We also have
+\[PoA(\mathcal{G}_p)=\frac{WorstNash(\mathcal{G}_p)}{OPT(\mathcal{G}_p)}\]
+where
+\[WorstNash(\mathcal{G}_p)=1\]
+\begin{equation}
+\begin{aligned}
+    OPT(\mathcal{G}_p)&=c(\varepsilon=\varepsilon_0)\\
+    &=1-(p+1)^{-\frac{1}{p}}+(p+1)^{-\frac{p+1}{p}}\\
+    &=1+(p+1)^{-\frac{1}{p}}\left[(p+1)^{-1}-1\right]
+\end{aligned}
+\end{equation}
+Then
+\begin{equation}
+    PoA(\mathcal{G}_p)
+    =\frac{1}{1+(p+1)^{-\frac{1}{p}}\left[(p+1)^{-1}-1\right]}
+\end{equation}
+\subsection{Ratio Limit}
+Note that
+\begin{equation}
+\begin{aligned}
+    \lim_{p\rightarrow\infty}(p+1)^{-\frac{1}{p}}
+    &=\lim_{p\rightarrow\infty}e^{-\frac{1}{p}\ln(p+1)}\\
+    &=e^0\\
+    &=1
+\end{aligned}
+\end{equation}
+\begin{equation}
+    \lim_{p\rightarrow\infty}(p+1)^{-1}=0
+\end{equation}
+Thus we have
+\begin{equation}
+    \lim_{p\rightarrow\infty}PoA(\mathcal{G}_p)
+    =\lim_{p\rightarrow\infty}
+    \frac{1}{1+(p+1)^{-\frac{1}{p}}\left[(p+1)^{-1}-1\right]}\\
+    =\infty
+\end{equation}
+
+
 \end{document}
