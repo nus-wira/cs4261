@@ -42,7 +42,7 @@
     $W^t$ & 3 & 2 & 3/2 & 11/8\\
     $p_i^t$ & $(1/3,1/3,1/3)$ & $(1/4,1/4,1/2)$ & $(1/6,1/6,2/3)$ 
     & $(2/11,1/11,8/11)$ \\  
-    $l^t$ & 2/3 & 1/2 & 1/3 & 8/11 \\
+    $l^t$ & 2/3 & 1/2 & 1/6 & 8/11 \\
     \hline
 \end{tabular}\\
 \begin{tabular}{ |c|c|c|c|c| }
@@ -56,11 +56,34 @@
     $l^t$ & 6/7 & 3/4 & 2/5 & 1/4 \\
     \hline
 \end{tabular}
-\[L^8=\sum_{t=1}^{8}l^t=\frac{3453}{770}\approx 4.484\]
+\[L^8=\sum_{t=1}^{8}l^t=\frac{4987}{1155}\approx 4.3177\]
 
 %======================================
 \newpage
 \section{Regret, Small Number of Rounds}
+We want the expected loss at each time step to be at least 1/2,
+so that the total loss is at least $T/2$.
+We assign the losses as follows.
+\begin{enumerate}
+    \item At $t=1$, we start by choosing $n/2$ experts to have 1 loss
+    based on whatever the algorithm $\mathcal{A}$ picked.
+    \item We maintain that half the experts from time step $t$
+    that had 0 loss will have 1 loss in time step $t+1$,
+    while those that had 1 loss at $t$ will continue to have 1 loss at $t+1$.
+    These assignments are similarly based on the algorithm $\mathcal{A}$
+    to ensure maximal loss.
+    We can see that even if the algorithm tries to focus on experts that
+    never had loss up to time step $t$, half of them will end up with
+    loss at $t+1$.
+    The rest of the experts have loss 1 anyway.
+\end{enumerate}
+Next, we notice that the number of experts with 0 loss halves at 
+every time step.
+This means, at the end of $T$ time steps, there are
+\[\frac{n}{2^T}>\frac{n}{n}=1\]
+experts that have maintained 0 loss for all $T$ time steps.
+This satisfies (b), and (a) is already satisfied by having
+at least 1/2 expected loss for $T$ time steps.
 
 %======================================
 \newpage
@@ -73,7 +96,7 @@ Then
 \begin{equation}
 \begin{aligned}
     \frac{dc}{d\varepsilon}=1-(p+1)(1-\varepsilon)^p\\
-    \frac{dc}{d\varepsilon}=p(p+1)(1-\varepsilon)^{p-1} > 0
+    \frac{d^2c}{d\varepsilon^2}=p(p+1)(1-\varepsilon)^{p-1} > 0
 \end{aligned}
 \end{equation}
 We have a minimum when $\frac{dc}{d\varepsilon}=0$.
