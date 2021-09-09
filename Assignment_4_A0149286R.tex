@@ -1,0 +1,51 @@
+\input{preamble.tex}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 4}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{General Induced Subgraph Game}
+\begin{proof}
+    We can consider the elements in the set of edges 
+    $e\in E,e=\{a,b\} \subseteq N$ where $a,b$ are players.
+    Then we can define the induced subgraph game to be
+    a weighted sum of ultimatum games
+    \[v(S)=\sum_{e\in E} w(e)u_e(S)\]
+    where $u_e$ is the ultimatum game for the players $a,b$. 
+    Then
+    \begin{equation}
+    \begin{aligned}
+        Sh_i(v)&=\sum_{e\in E} w(e)Sh_i(u_e) \quad\text{(by linearity)}\\
+        &= \sum_{e\in E_i} w(e)Sh_i(u_e) \quad\text{(by dummy property)}\\
+        &= \sum_{e\in E_i} w(e)\cdot\frac{1}{2} 
+        \quad\text{(by symmetry/efficiency)}\\
+        &= \frac{1}{2} \sum_{e\in E_i} w(e)
+    \end{aligned}
+    \end{equation}
+\end{proof}
+
+
+%======================================
+\newpage
+\section{Shapley Value}
+\subsection{$N=\{1,2,3\}$}
+
+\subsection{Induced Subgraph Game}
+
+\subsection{Weighted Voting Game}
+
+%======================================
+\newpage
+\section{Prove}
+\subsection{}
+
+\subsection{}
+
+\subsection{}
+
+\subsection{}
+
+
+\end{document}
