@@ -42,7 +42,7 @@
 \end{empheq}
 From $(2),(3),(4),(5)$, we have
 \[x_1=x_3=0\]
-Then we must have $x_2=0$.
+Then we must have $x_2=1$.
 The core payoff vector is $\boldsymbol{x}=(0,1,0)$.\\
 Considering player 3's contribution for various permutations,
 \begin{equation}
@@ -119,12 +119,82 @@ By efficiency, $\sum_{i\in N} Sh_i =1$. So
 \newpage
 \section{Prove}
 \subsection{}
+False. A counterexample exists in the lecture slides:
+\[v(1)=v(2)=v(3)=0\]
+\[v(1,2)=4,v(1,3)=5,v(2,3)=6\]
+\[v(1,2,3)=7\]
+We have for all disjoint $S,T\subseteq \{1,2,3\}$,
+\[v(S)+v(T)\leq v(S\cup T)\]
+but its core is empty as proven in lecture.
 
 \subsection{}
+True. \\
+\begin{proof}
+    Suppose that $\vec{x},\vec{y}\in Core(\mathcal{G})$.
+    From the definition of the $Core$,
+    \[\forall S\subseteq N : \sum_{i\in S}x_i = x(S) \geq v(S)\]
+    \[\forall S\subseteq N : \sum_{i\in S}y_i = y(S) \geq v(S)\]
+    \[\forall S\subseteq N : 
+    \sum_{i\in S}\alpha x_i + \sum_{i\in S}(1-\alpha) y_i
+    \geq \alpha v(S) + (1-\alpha) v(S) = v(S)\]
+    By definition, we have 
+    $\alpha \vec{x} + (1-\alpha) \vec{y}\in Core(\mathcal{G})$.
+\end{proof}
 
 \subsection{}
+True. \\
+\begin{proof}
+    By definition of the $Core$,
+    \[\sum_{i\in N}x_i = v(N)\]
+    \begin{equation}
+        \forall i \in N : x_i \geq v(\{i\})
+    \end{equation}
+    By the Efficiency property of the Shapley value,
+    \begin{equation}
+        \sum_{i\in N} Sh_i = v(N) = \sum_{i\in N}x_i
+    \end{equation}
+    By the Additivity property, 
+    \begin{equation}
+        \forall i\in N : Sh_i(\{i\}) + Sh_i(N-\{i\}) = Sh_i
+    \end{equation}
+    By the Dummy property,
+    \begin{equation}
+        \forall i\in N : Sh_i(N-\{i\}) = 0
+    \end{equation}
+    Thus, from $(15), (17), (18)$,
+    \begin{equation}
+        \forall i\in N : Sh_i(\{i\}) = Sh_i = v(\{i\}) \geq x_i
+    \end{equation}
+    Suppose we have $\exists i \in N, Sh_i(N) > x_i$.
+    From $(16)$,
+    \[\sum_{i\in N} Sh_i > \sum_{i\in N}x_i\]
+    A contradiction, so 
+    \begin{equation}
+        \forall i\in N : Sh_i(N) \leq x_i
+    \end{equation}
+    From $(19),(20)$, we have that
+    \[\forall i\in N : Sh_i(N) = x_i\]
+    If the core exists, the Shapley value is in the core.
+\end{proof}
 
 \subsection{}
+True.\\
+\begin{proof}
+    For each subset $T\subseteq N$, there is some $WVG_T$ for which
+    the task $t_j\in\mathcal{T}$ has the best value $v_j$.
+    We can express the value of the $TTG$ as
+
+    \[v(S) = \sum_{T\subseteq N, T\neq\emptyset} v_j WVG_{T}(S) \]
+    Then we would have 
+    \[Sh_i(v)=\sum_{T\subseteq N, T\neq\emptyset} v_j Sh_i(WVG_{T})\]
+    That is, the Shapley value of the $TTG$ is a linear combination
+    of the Shapley values of some $WVG$.
+    It suffices to compare the Shapley value of the $WVG$.\\
+    Consider players $i,j$, with weights $w_i>w_j$.
+    Clearly, for any permutation where player $j$ is pivotal,
+    $i$ will also be pivotal. Then, $Sh_i(WVG) \geq Sh_j(WVG)$.
+    Thus, we have that if $w_i>w_j$, then $Sh_i\geq Sh_j$.
+\end{proof}
 
 
 \end{document}
