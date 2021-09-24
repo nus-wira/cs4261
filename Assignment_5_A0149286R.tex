@@ -1,0 +1,127 @@
+\input{preamble.tex}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 5}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{Bargaining Problems}
+
+\subsection{}
+From $S$, we have
+\[0 \leq y^2 \leq 1-\frac{x^2}{2}\]
+\[0 \leq x \leq \sqrt{2}\]
+\[0 \leq y \leq \sqrt{1-\frac{x^2}{2}}\]
+\subsubsection{Socially Optimal}
+We want to maximize $x+y$.
+\[x + y \leq x + \sqrt{1-\frac{x^2}{2}}\]
+Let $f(x)=x + \sqrt{1-\frac{x^2}{2}}$.
+\[f'(x)=1-\frac{x}{2\sqrt{1-\frac{x^2}{2}}}\]
+\[f''(x)=-\frac{\sqrt{2}}{(2-x^2)^{3/2}}<0\]
+We have a maximum when $f'(x)=0$.
+\[1-\frac{x}{2\sqrt{1-\frac{x^2}{2}}}=0\]
+\[4-2x^2=x^2\]
+\[x=\frac{2}{\sqrt{3}}\]
+Then we have
+\[y=\sqrt{1-\frac{x^2}{2}}=\frac{1}{\sqrt{3}}\]
+\[x+y=\frac{3}{\sqrt{3}}=\sqrt{3}\]
+
+\subsubsection{Nash Bargaining}
+We want to maximize $xy$.
+\[xy \leq x\sqrt{1-\frac{x^2}{2}}\]
+Let $f(x)=x \sqrt{1-\frac{x^2}{2}}$.
+\[f'(x)=-\frac{x^2-1}{\sqrt{1-\frac{x^2}{2}}}\]
+\[f''(x)=\frac{\sqrt{2}x(x^2-3)}{(2-x^2)^{3/2}}<0\]
+We have a maximum when $f'(x)=0$.
+\[-\frac{x^2-1}{\sqrt{1-\frac{x^2}{2}}}=0\]
+\[x=1\]
+Then
+\[y=\sqrt{1-\frac{x^2}{2}}=\frac{1}{\sqrt{2}}\]
+\[xy=\frac{1}{\sqrt{2}}\]
+
+\subsection{}
+From $S$, we have
+\[0\leq y=1-x\]
+\[0\leq x\leq 1\]
+
+\subsubsection{Socially Optimal}
+We want to maximize $x^a+y=x^a+1-x$.
+Let $f(x)=x^a-x+1$.
+\[f'(x)=ax^{a-1}-1\]
+\[f''(x)=a(a-1)x^{a-2}>0\]
+We have a minimum at $f'(x)=0$.
+\[ax^{a-1}-1=0\]
+\[x=a^{-1/(a-1)}\]
+Clearly, $x>0$.
+\[a>1\]
+\[\frac{1}{a-1}>0\]
+\[a^{1/(a-1)} > 1\]
+\[a^{-1/(a-1)} < 1\]
+Then we have $0<x<1$. We then check the bounds, where $x=0,1$.
+\[f(0)=1\]
+\[f(1)=1\]
+Thus, we have a maximum at 
+\[(x,y)=(0,1)\]
+\[(x,y)=(1,0)\]
+where $x^a+y=1$.
+
+\subsubsection{Nash Bargaining}
+We want to maximize $yx^a=(1-x)x^a=x^a-x^{a+1}$.
+Let $f(x)=x^a-x^{a+1}$.
+\[f'(x)=ax^{a-1}-(a+1)x^a=x^{a-1}(a-(a+1)x)\]
+Since $0\leq x \leq 1$, we have $f'(x) < 0$ when
+\[a-(a+1)x<0\]
+\[x>\frac{a}{a+1}\]
+Similarly, $f'(x)>0$ when
+\[x<\frac{a}{a+1}\]
+Thus, there is a maximum at 
+\[x=\frac{a}{a+1}\]
+\[y=1-x=\frac{1}{a+1}\]
+\[yx^a=\frac{a^a}{(a+1)^{a+1}}\]
+
+
+\subsection{}
+
+From $S$, we have
+\[0< y=2-x\]
+\[0< x< 2\]
+
+\subsubsection{Socially Optimal}
+We want to maximize 
+\[\log x + \log y = \log xy\]
+Since $\log x$ is an increasing function, it suffices to maximize $xy$.\\
+Let $f(x)=xy=x(2-x)$. Clearly, $f(x)$ is a quadratic function,
+with a maximum at $x=1$. Then $y=1$ and the maximum value is
+\[\log xy =0\]
+
+\subsubsection{Nash Bargaining}
+We want to maximize $\log x \log y=\log x \log(2-x)$.
+Note that for $0<x<2$, we have
+\[\log x < \log 2\]
+\[\log (2-x) < \log 2\]
+For $0<x<1$,
+\[\log x < \log 1=0\]
+\[0 < \log (2-x) < \log 2\]
+\[\log x \log (2-x) < 0\]
+For $1<x<2$,
+\[0 < \log x < \log 2\]
+\[\log (2-x) < 0\]
+\[\log x \log (2-x) < 0\]
+At $x=1$,
+\[\log x \log (2-x) = 0\]
+Thus, we have a maximum at
+\[x=y=1\]
+\[\log x \log y = 0\]
+
+
+%======================================
+\newpage
+\section{Network Flow Games}
+
+%======================================
+\newpage
+\section{Coalition Structure}
+
+
+\end{document}
