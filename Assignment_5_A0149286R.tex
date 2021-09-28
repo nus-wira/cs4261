@@ -136,11 +136,11 @@ The game is superadditive.
 Consider a minimum cut $C\subseteq N$.
 From the theorem, and setting $x_i=w_i,\forall i\in C$, 
 and $x_i=0$ otherwise, we have
-\[v(C)=\sum_{i\in C}w_i = v(N)\]
+\[\sum_{i\in N}x_i=\sum_{i\in C}w_i = v(N)\]
 Consider any subset $S\subseteq N$.
 Then we know since $C$ is a minimum cut of the larger graph $N$,
 $S\cap C$ is a cut for the smaller graph $S$.
-\[v(S\cap C) = \sum_{i\in S\cap C}w_i \geq v(S)\]
+\[\sum_{i\in S}x_i = \sum_{i\in S\cap C}w_i \geq v(S)\]
 Thus, with these two conditions, we have a valid core.
 The core of the network flow game is non-empty.
 
@@ -185,7 +185,7 @@ If $CS^*$ is a lean, optimal coalition structure for a WVG, then
 \subsection{}
 From (a), we can ensure that $CS^*$ is a lean, optimal coalition structure.
 We have that $\forall i\in N\backslash B$,
-either $i\in S\in\widehat{CS^*}$, a winning coalition where $|S|>2$,
+either $i\in S\in\widehat{CS^*}$, a winning coalition where $|S|\geq 2$,
 or $i\in L$, the losing coalition.
 Clearly, 
 \[\sum_{i\in L} w_i < q\]
@@ -218,8 +218,9 @@ Thus, $\vec{x}^*$ is stable.
 \subsubsection{Stabilize}
 \begin{equation}
 \begin{aligned}
-    \sum_{i\in N} x_i^* &= \sum_{i\in B} x_i^* + \sum_{i\notin B} x_i^*\\
-    &= |B|+\sum_{i\notin B} \frac{w_i}{q}\\
+    \sum_{i\in N} x_i^* 
+    &= \sum_{i\in B} x_i^* + \sum_{i\in N\backslash B} x_i^*\\
+    &= |B|+\sum_{i\in N\backslash B} \frac{w_i}{q}\\
     &\leq |B|+2|\widehat{CS^*}| + 1\\
     &\leq 2(|B|+|\widehat{CS^*}|) + 1\\
     &= 2OPT(G) + 1
