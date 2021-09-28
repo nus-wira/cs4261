@@ -50,15 +50,7 @@ We want to maximize $x^a+y=x^a+1-x$.
 Let $f(x)=x^a-x+1$.
 \[f'(x)=ax^{a-1}-1\]
 \[f''(x)=a(a-1)x^{a-2}>0\]
-We have a minimum at $f'(x)=0$.
-\[ax^{a-1}-1=0\]
-\[x=a^{-1/(a-1)}\]
-Clearly, $x>0$.
-\[a>1\]
-\[\frac{1}{a-1}>0\]
-\[a^{1/(a-1)} > 1\]
-\[a^{-1/(a-1)} < 1\]
-Then we have $0<x<1$. We then check the bounds, where $x=0,1$.
+We have a minimum at $f'(x)=0$. The maximum must be on the bound of $x$.
 \[f(0)=1\]
 \[f(1)=1\]
 Thus, we have a maximum at 
@@ -119,9 +111,120 @@ Thus, we have a maximum at
 \newpage
 \section{Network Flow Games}
 
+\subsection{Superadditive}
+Suppose we have disjoint sets $S,T\subseteq N$.
+Since any flow using edges in $S$ will be in $S\cup T$,
+and any flow using edges in $T$ will be in $S\cup T$,
+and all flows using edges only in $S$ will not be a flow
+using edges only in $T$, and vice versa, 
+it can be seen that
+\[v(S) + v(T) \leq v(S\cup T)\]
+The game is superadditive.
+
+
+\subsection{Core}
+
+\begin{theorem}
+    Max-Flow Min-Cut.
+    The maximum amount of flow from $s$ to $t$ is equal to
+    the total weight of edges in a minimum cut.
+\end{theorem}
+\begin{corollary}
+    The maximum amount of flow from $s$ to $t$ is less than or equal to
+    the total weight of edges in any cut.
+\end{corollary}
+Consider a minimum cut $C\subseteq N$.
+From the theorem, and setting $x_i=w_i,\forall i\in C$, 
+and $x_i=0$ otherwise, we have
+\[v(C)=\sum_{i\in C}w_i = v(N)\]
+Consider any subset $S\subseteq N$.
+Then we know since $C$ is a minimum cut of the larger graph $N$,
+$S\cap C$ is a cut for the smaller graph $S$.
+\[v(S\cap C) = \sum_{i\in S\cap C}w_i \geq v(S)\]
+Thus, with these two conditions, we have a valid core.
+The core of the network flow game is non-empty.
+
 %======================================
 \newpage
 \section{Coalition Structure}
+
+\subsection{Lean}
+Suppose we have an optimal coalition structure $CS^*$ that is not lean.
+Clearly an optimal coalition structure exists,
+since players can always be partitioned in a weighted voting game.
+We can take two steps.
+\begin{enumerate}
+    \item If it has more than one losing coalition, 
+    simply union the losing coalitions 
+    to create a larger losing coalition $L\in CS^*$.
+    Since $CS^*$ is optimal, this will not create any new winning coalition.
+    \item Then, $\forall S\in CS_+^*$, 
+    if $\exists i\in S, S\backslash\{i\}$ is winning,
+    move $i$ to the losing coalition $L$. 
+    With the same reasoning as Step 1, 
+    this will not create any new winning coalition.
+    Continue to remove players until each $S\in CS_+^*$
+    satisfies the lean condition.
+\end{enumerate}
+Thus, we have a resulting lean optimal coalition structure.
+
+\subsection{}
+Suppose not, that $CS^*$ is lean, optimal but
+\[\exists S\in CS_+^*, w(S)\geq 2q \wedge |S| \geq 2\]
+Since $CS^*$ is lean, removing any player $i\in S$ will result
+in a losing coalition $S\backslash\{i\}$.
+That is,
+\[\forall i\in S:w(S\backslash\{i\})=w(S)-w_i<q\]
+\[\forall i\in S:w_i>w(S)-q\geq 2q-q=q\]
+But this is a contradiction, since any player $i\in S$ alone 
+results in a winning coalition, making $CS^*$ not lean.
+Thus, the supposition is false.
+If $CS^*$ is a lean, optimal coalition structure for a WVG, then
+\[\forall S\in CS_+^*: |S| \geq 2 \rightarrow w(S) < 2q\]
+
+\subsection{}
+From (a), we can ensure that $CS^*$ is a lean, optimal coalition structure.
+We have that $\forall i\in N\backslash B$,
+either $i\in S\in\widehat{CS^*}$, a winning coalition where $|S|>2$,
+or $i\in L$, the losing coalition.
+Clearly, 
+\[\sum_{i\in L} w_i < q\]
+Thus, using the result from (b),
+\[\sum_{i\in N\backslash B} w_i
+= \sum_{i\in \widehat{CS^*}} w_i + \sum_{i\in L} w_i
+< 2q|\widehat{CS^*}| + q\]
+
+\subsection{Payoff Division}
+
+\subsubsection{Stable}
+Suppose $\vec{x}^*$ is not stable.
+Then 
+\begin{equation}
+    \exists S\subseteq N, \sum_{i\in S} x_i^* < v(S)
+\end{equation}
+Since it is a simple game, we only have $v(S)=0,1$.
+Then
+\[\sum_{i\in S} x_i^* < 1\]
+as we cannot have $v(S)=0$.
+Then $S\cap B=\emptyset$, that is, $S,B$ are disjoint.
+So,
+\[\sum_{i\in S} x_i^* = \sum_{i\in S} \frac{w_i}{q}\]
+But $v(S)=1$, so the coalition is winning,
+\[\sum_{i\in S} w_i \geq q\]
+\[\sum_{i\in S} x_i^* = \sum_{i\in S} \frac{w_i}{q} \geq 1\]
+A contradiction with $(1)$. 
+Thus, $\vec{x}^*$ is stable.
+
+\subsubsection{Stabilize}
+\begin{equation}
+\begin{aligned}
+    \sum_{i\in N} x_i^* &= \sum_{i\in B} x_i^* + \sum_{i\notin B} x_i^*\\
+    &= |B|+\sum_{i\notin B} \frac{w_i}{q}\\
+    &\leq |B|+2|\widehat{CS^*}| + 1\\
+    &\leq 2(|B|+|\widehat{CS^*}|) + 1\\
+    &= 2OPT(G) + 1
+\end{aligned}
+\end{equation}
 
 
 \end{document}
