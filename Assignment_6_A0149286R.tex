@@ -1,0 +1,57 @@
+\input{preamble.tex}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 6: Stable Matching}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{Gale-Shapley Algorithm}
+
+\subsection{$best(s)$}
+Suppose not, that for some $s\in S, s$ is not matched to $best(s)\in H$ 
+when running the Gale-Shapley algorithm.
+We know as proven in lecture that the algorithm will produce
+a stable matching, so all matched pairs $(s,h)$ will be valid.
+Then, this would mean that $s$ is rejected by $best(s)$.
+Consider then the first time that a student $s$ is rejected by $best(s)$.
+Then we have some other student $s'\neq s$ 
+that proposed to $best(s)$ such that
+\begin{equation}
+    s'\succ_{best(s)}s
+\end{equation}
+Since this is the first rejection by a valid pair, we must have that
+\begin{equation}
+    \forall h\in H: h\succ_{s'}best(s) 
+    \rightarrow (s',h) \text{ is invalid}
+\end{equation}
+Now consider a stable matching $M$ where $M(s)=best(s)$.
+From the contrapositive of $(2)$, we have
+\begin{equation}
+    best(s)\succ_{s'}M(s')
+\end{equation}
+We also know that $s=M^{-1}(best(s))$, which means from $(1),(3)$, 
+we have the pair $(s,best(s))$ being a blocking pair.
+This is a contradiction as $M$ is a stable matching.
+Thus, the supposition is false, and we have that all students $s$
+are matched to $best(s)$ when running the Gale-Shapley algorithm.
+
+\subsection{$worst(h)$}
+Suppose not, that for some $h\in H,h$ is not assigned to $worst(h)$.
+Then $h$ is matched to $s$, so from part (a), $h=best(s)$.
+\begin{equation}
+    \exists h\in H,\exists s\in S, s\succ_h worst(h)\wedge h=best(s)
+\end{equation}
+Consider a stable matching $M$ where $M(worst(h))=h=best(s)$.
+In this matching, we have
+\[M(s)\neq h=best(s)\]
+so
+\begin{equation}
+    h\succ_s M(s)
+\end{equation}
+We know then that $worst(h)=M^{-1}(h)$, so from $(4),(5)$,
+we have a blocking pair $(s,h)$ which is a contradiction
+as $M$ is a stable matching.
+Thus, the supposition is false, and we have that all hospitals $h$
+are matched to $worst(s)$ when running the Gale-Shapley algorithm.
+\end{document}
