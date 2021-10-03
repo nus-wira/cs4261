@@ -54,4 +54,90 @@ we have a blocking pair $(s,h)$ which is a contradiction
 as $M$ is a stable matching.
 Thus, the supposition is false, and we have that all hospitals $h$
 are matched to $worst(s)$ when running the Gale-Shapley algorithm.
+
+%======================================
+\newpage
+\section{Unique}
+
+\subsection{Same Preference}
+Suppose all hospitals have the same preference over students.
+\[\forall h \in H: s_1\succ_h s_2 \succ_h \dots \succ_h s_n\]
+We prove by induction that any stable matching has a unique mapping
+\[M(s_i)=h_i, \forall h_i\in H\]
+\begin{proof}
+    \\
+    \textbf{Base Case. $(n=1)$}.\\
+    Suppose we have matchings $M_1,M_2$, and $h_{1,1}\neq h_{1,2}$, where 
+    \[M_1(s_1)=h_{1,1}\]
+    \[M_2(s_1)=h_{1,2}\]
+    We know
+    \[ i > 1 \rightarrow s_1\succ_h s_i\]
+    WLOG, suppose
+    \[h_{1,1} \succ_{s_1} h_{1,2}\]
+    Then we have a blocking pair $(s_1,h_{1,1})$ in $M_2$.
+    So we must have $h_1=h_{1,1}=h_{1,2}$.\\
+    \textbf{Inductive Case.} \\
+    Suppose for any matching $M$, we have a unique mapping for $s_i$,
+    \[1\leq i \leq k \rightarrow M(s_i)=h_i\]
+    Suppose we have matchings $M_1,M_2$, and $h_{k_1}\neq h_{k_2}$, where 
+    \[M_1(s_{k+1})=h_{k_1}\]
+    \[M_2(s_{k+1})=h_{k_2}\]
+    We know 
+    \[i > k+1 \rightarrow s_{k+1} \succ_h s_i\]
+    \[i < k+1 \rightarrow M(s_i)=h_i\neq h_{k+1}\]
+    WLOG, suppose
+    \[h_{k_1} \succ_{s_{k+1}} h_{k_2}\]
+    Then we have a blocking pair $(s_{k+1},h_{k_1})$ in $M_2$.
+    So we must have $h_{k+1}=h_{k_1}= h_{k_2}$.\\
+    By Induction, any stable matching has a unique mapping
+    \[M(s_i)=h_i, \forall h_i\in H\]
+\end{proof}
+
+\subsection{Same Optimal}
+The student-optimal matching will have
+\[\forall s\in S, \forall h \in H: M(s)=best(s) \wedge M^{-1}(h)=worst(h)\]
+Similarly, the hospital-optimal matching will have
+\[\forall s\in S, \forall h \in H: M(s)=worst(s) \wedge M^{-1}(h)=best(h)\]
+Given the same optimal matchings, we then have
+\[\forall s\in S: best(s)=worst(s)\]
+\[\forall h\in H: best(h)=worst(h)\]
+Thus, any other mapping would have invalid pairs, and would not be stable.
+There exists a unique stable matching given by Gale-Shapley.
+
+%======================================
+\newpage
+\section{Non-Unique}
+Suppose we have students and hospitals $s_1,s_2,h_1,h_2$ with
+\[h_1\succ_{s_1}h_2\]
+\[h_2\succ_{s_2}h_1\]
+\[s_2\succ_{h_1}s_1\]
+\[s_1\succ_{h_2}s_2\]
+Then the matchings $M_1,M_2$,
+\[M_1(s_1)=h_1, M_1(s_2)=h_2\]
+\[M_2(s_1)=h_2, M_2(s_2)=h_1\]
+are both stable.
+
+%======================================
+\newpage
+\section{Single Group}
+Not always. Suppose we have students $s_1,s_2,s_3,s_4\in S$,
+with preferences
+\[s_2\succ_{s_1}s_3\succ_{s_1}s_4\]
+\[s_3\succ_{s_2}s_1\succ_{s_2}s_4\]
+\[s_1\succ_{s_3}s_2\succ_{s_3}s_4\]
+\[s_1\succ_{s_4}s_2\succ_{s_4}s_4\]
+Then, we have 3 possible partitions.
+\begin{enumerate}
+    \item \[\{s_1,s_2\},\{s_3,s_4\}\]
+    Since $s_3\succ_{s_2}s_1 \wedge s_2\succ_{s_3}s_4$,
+    this matching is not stable.
+    \item \[\{s_1,s_3\},\{s_2,s_4\}\]
+    Since $s_2\succ_{s_1}s_3 \wedge s_1\succ_{s_2}s_4$,
+    this matching is not stable.
+    \item \[\{s_1,s_4\},\{s_2,s_3\}\]
+    Since $s_3\succ_{s_1}s_4 \wedge s_1\succ_{s_3}s_2$,
+    this matching is not stable.
+\end{enumerate}
+All matchings are unstable.
+
 \end{document}
