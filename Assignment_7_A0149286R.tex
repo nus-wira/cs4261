@@ -1,0 +1,61 @@
+\input{preamble.tex}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 7: Fair Allocation of Indivisible Goods}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{Nash Welfare}
+Suppose not, that there is an allocation $A^*$ that maximises
+Nash welfare, and that there exists two players $i,j\in N$ such that
+the bundle of $j$ is not empty and 
+\begin{equation}
+    \forall g\in A_j^* : v_i(A_i^*) < v_i(A_j^*\backslash\{g\})
+\end{equation}
+Since $NW(A)>0$, we have $\forall A_i^*: v_i(A_i^*)>0$.
+Consider $g^*\in A_j^*$ that minimizes the ratio $\frac{v_j(g^*)}{v_i(g^*)}$.
+\[\forall g\in A_j^* : 
+\frac{v_j(g^*)}{v_i(g^*)} \leq \frac{v_j(g)}{v_i(g)}\]
+\[\forall g\in A_j^* : v_j(g^*)v_i(g) \leq v_i(g^*)v_j(g)\]
+By summing over all $g\in A_j^*$,
+\begin{equation}
+    v_j(g^*)v_i(A_j^*) \leq v_i(g^*)v_j(A_j^*)
+\end{equation}
+Using $(1)$,
+\begin{equation}
+    v_i(g^*) + v_i(A_i^*) < v_i(g^*) + v_i(A_j^*\backslash\{g^*\})  
+    = v_i(A_j^*)
+\end{equation}
+Combining $(2),(3)$,
+\begin{equation}
+    v_j(g^*)(v_i(g^*) + v_i(A_i^*))
+    <v_j(g^*)v_i(A_j^*)\leq v_i(g^*)v_j(A_j^*)
+\end{equation}
+Finally,
+\begin{equation}
+    v_i(g^*)v_j(A_j^*) - v_j(g^*)(v_i(g^*) + v_i(A_i^*)) > 0
+\end{equation}
+The value of the Nash welfare is
+\[NW(A*)=v_i(A_i^*)v_j(A_j^*)\prod_{k\in N\backslash\{i,j\}}v_k(A_k^*)\]
+Moving $g^*$ from $j$'s bundle to $i$'s bundle, the new allocation
+$A^{**}$ has Nash welfare
+\[NW(A^{**})=(v_i(A_i^*)+v_i(g^*))(v_j(A_j^*)-v_j(g^*))
+\prod_{k\in N\backslash\{i,j\}}v_k(A_k^*)\]
+Notice that
+\begin{equation}
+\begin{aligned}
+    &(v_i(A_i^*)+v_i(g^*))(v_j(A_j^*)-v_j(g^*))\\
+    &=v_i(A_i^*)v_j(A_j^*)+v_i(g^*)v_j(A_j^*)
+    -v_j(g^*)(v_i(A_i^*)+v_i(g^*))\\
+    &> v_i(A_i^*)v_j(A_j^*) \quad\text{(from (5))}\\
+\end{aligned}
+\end{equation}
+Then
+\[NW(A^{**})>v_i(A_i^*)v_j(A_j^*)\prod_{k\in N\backslash\{i,j\}}v_k(A_k^*)
+=NW(A^*)\]
+A contradiction as $NW(A^*)$ maximizes the Nash welfare.
+Thus, an allocation $A^*$ that maximizes Nash welfare is $EF1$.
+
+
+\end{document}
