@@ -85,6 +85,46 @@ It is $EF1$.
 
 %======================================
 \newpage
-\section{Three Players, Four Goods}
+\section{Strong $EF1$}
+
+\subsection{Round-Robin}
+For every player $j,g_j\in A_j$ can be the first pick for $j$.
+If $i$ is ahead of $j$ in the order, then clearly $i$ does not envy
+$j$ in every pick and 
+\[v_i(A_i)\geq v_i(A_j) \geq v_i(A_j\backslash\{g_j\})\]
+If $i$ is behind $j$ in the order, then we consider the first round
+to start at $i$'s pick, ignoring $j$'s first pick of $g_j$,
+and $i$ does not envy $j$ for the rest of the picks.
+\[v_i(A_i)\geq v_i(A_j\backslash\{g_j\})\]
+The output of the Round-Robin algorithm is s-EF1.
+
+\subsection{Envy-Cycle Elimination}
+We can think of the items each player has as being bundles,
+and each time an item is allocated, it is allocated to the bundle.
+The algorithm either moves bundles to different players, 
+or allocates new items to bundles.
+For each player $j$'s bundle $A_j$ in the output of the algorithm,
+the last item allocated to the bundle can be $g_j\in A_j$. 
+Since allocations to bundles are unenvied before allocating,
+each player $i$ will not envy player $j$ for up to good $g_j$.
+The output of the Envy-Cycle algorithm is s-EF1.
+
+%======================================
+\newpage
+\section{MMS Allocation}
+
+\subsection{Two Agents}
+Two agents can use a "cut-and-choose algorithm".
+Player 1 divides the set of goods into two bundles $A_1,A_2$ 
+as equally valued as possible in their view, 
+guaranteeing that one bundle is valued
+at $v_1(A_1)=MMS_1$, and the other is $v_1(A_2)=v_1(G)-MMS_1\geq MMS_1$.
+When Player 2 picks the bundle for themselves, they can just pick
+the weakly higher-valued one for themselves. 
+Since $MMS_2\leq \frac{v_2(G)}{2}$ and $v_2(A_1)+v_2(A_2)=v_2(G)$,
+we must have at either $v_2(A_1) \geq MMS_2$ or $v_2(A_2) \geq MMS_2$.
+Then both players have their $MMS$ share and we have an MMS allocation.
+
+\subsection{At Least Three Agents}
 
 \end{document}
