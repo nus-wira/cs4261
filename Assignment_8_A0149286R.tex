@@ -1,0 +1,78 @@
+\input{preamble.tex}
+
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+
+\begin{document}
+
+% Indicate your name and your student number here (e.g., A01xxx)
+\header{Assignment 8}{Wira Azmoon Ahmad}{A0149286R}
+
+%======================================
+\section{Rent Division}
+
+\subsection{}
+Since $v_{i1}=v_{i2}=\dots=v_{in}$, and $\sum_{j=1}^n v_{ij}=r$, then
+\[\forall j: v_{ij} = \frac{r}{n}\]
+Any assignment $j=\sigma(i)$ is valued the same by player $i$, so
+\[\forall \sigma : v_{i\sigma(i)}=\frac{r}{n}\]
+Since the outcome is EF, for the $\sigma$ in such an outcome,
+\[\forall j: v_{i\sigma(i)}-p_{\sigma(i)}\geq v_{ij}-p_j\]
+\[\forall j: -p_{\sigma(i)}\geq-p_j\]
+\[\forall j: p_{\sigma(i)} \leq p_j\]
+The price paid by player $i$ in any envy-free outcome
+will be the least amount among all players.
+
+\newpage
+\subsection{}
+Suppose we have an EF outcome with players $i,i'$, rooms $j,j'$,
+with assignment $\sigma(i)=j, \sigma(i')=j'$.
+Since the outcome is EF,
+\[v_{i\sigma(i)}-p_{\sigma(i)}\geq v_{ij'}-p_{j'}\]
+Since $v_{ij}=v_j$, and $\sigma(i)=j$,
+\[v_{j}-p_{j}\geq v_{j'}-p_{j'}\]
+Rearranging,
+\begin{equation}
+    p_j \leq v_j-v_{j'} +p_{j'}
+\end{equation}
+By symmetry,
+\[p_{j'} \leq v_{j'}-v_{j} +p_{j}\]
+Rearranging once more,
+\begin{equation}
+    p_j \geq v_j-v_{j'} +p_{j'}
+\end{equation}
+Combining $(1),(2)$, we have for any EF outcome with price vector $\vec{p}$,
+\begin{equation}
+    \forall j, j':p_j=v_j-v_{j'}+p_{j'}
+\end{equation}
+Clearly $v_j-v_{j'}=k$ is a constant for each pair of players $j,j'$.
+Note also that $\sum_{j=1}^n p_j = r$.
+From $(3)$, for any EF price vector $\vec{p}^*\neq \vec{p}$,
+\[\forall j, j': p_j^*>p_j \Rightarrow p_{j'}^* > p_{j'}\]
+\[\forall j, j': p_j^*<p_j \Rightarrow p_{j'}^* < p_{j'}\]
+In either case where, $p_j^*\neq p_j$, we have 
+\[\sum_{j=1}^n p_j^* \neq r\]
+A contradiction. 
+Thus $p_j^*=p_j$ for any EF price vectors $\vec{p},\vec{p}^*$,
+and player $j$. The price vector for an EF outcome is unique.
+
+\subsection{}
+Suppose we have an EF outcome where $\sigma(i)=j$,
+for some player $i$ and least valued room $j$.
+By envy-freeness,
+\[\forall k: v_{i\sigma(i)}-p_{\sigma(i)} \geq v_{ik} - p_k\]
+\[\forall k: v_{ij}-p_{j} \geq v_{ik} - p_k\]
+Rearranging,
+\[\forall k: p_{j} \leq v_{ij}-v_{ik} + p_k\]
+Since $v_{ij}\leq v_{ik}$,
+\[v_{ij} - v_{ik} \leq 0\]
+Then,
+\[\forall k: p_{j} \leq v_{ij}-v_{ik} + p_k \leq p_k\]
+The price of room $j$ is the lowest of all rooms in any EF outcome.
+
+%======================================
+\newpage
+\section{Mechanism Design}
+
+
+\end{document}
