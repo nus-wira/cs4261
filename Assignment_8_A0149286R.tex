@@ -2,6 +2,7 @@
 
 \renewcommand{\thesection}{}
 \renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\alph{subsubsection}}
 
 \begin{document}
 
@@ -74,5 +75,97 @@ The price of room $j$ is the lowest of all rooms in any EF outcome.
 \newpage
 \section{Mechanism Design}
 
+\subsection{}
+\subsubsection{}
+False.
+If $k\leq n$, where $n$ is the number of players,
+the payment for each player is $0$ since the welfare of other
+players is the same whether or not each player is present.\\
+Consider $k>n$. 
+Suppose we have 2 successful bidders $j,j'$ for some optimal outcome $o^*$.
+In the optimal outcome, the items are assigned to the top $k$ player values.
+Then, if player $j$ is absent, there exists an optimal outcome $o_{-j}^*$
+where every player that was asssigned an item in $o^*$, including $j'$,
+is present, except for $j$, who would be replaced by 
+the top $(k+1)^{th}$ player value, say player $j''$, for the items.
+This then implies that
+\begin{equation}
+    v_{j'}(o^*)=v_{j'}(o_{-j}^*)
+\end{equation}
+Player $j$ would pay
+\begin{equation}
+\begin{aligned}
+    \sum_{i\neq j}[v_i(o_{-j}^*) - v_i(o^*)]
+    &= \sum_{i\notin \{j,j'\}} 
+    [v_i(o_{-j}^*) - v_i(o^*)] + v_{j'}(o_{-j}^*) - v_{j'}(o^*)\\
+    &= \sum_{i\notin \{j,j'\}} [v_i(o_{-j}^*) - v_i(o^*)]
+    \quad\text{(from (4))}
+\end{aligned}
+\end{equation}
+Similarly, there exists an optimal outcome $o_{-j'}^*$
+where $j'$ is replaced by $j''$. Player $j'$ would pay
+\begin{equation}
+    \sum_{i\notin \{j,j'\}} [v_i(o_{-j'}^*) - v_i(o^*)]
+\end{equation}
+Since $o_{-j}^*,o_{-j'}^*$ assign the items to the same players
+besides $j,j'$, we have that
+\begin{equation}
+    \sum_{i\notin \{j,j'\}} v_i(o_{-j}^*) 
+    = \sum_{i\notin \{j,j'\}} v_i(o_{-j'}^*)
+\end{equation}
+Then, comparing amounts paid by players $j,j'$ from $(5),(6)$,
+\[\sum_{i\notin \{j,j'\}} [v_i(o_{-j}^*) - v_i(o^*)]
+= \sum_{i\notin \{j,j'\}} [v_i(o_{-j'}^*) - v_i(o^*)]\]
+Players $j,j'$ both pay the same amount.
+It must be that two successful bidders pay the same amount of money.
+
+\subsubsection{}
+True. Consider an auction with 2 players and 2 items , where
+\[v_{11}=v_{22}=2, v_{12}=3, v_{21}=1\]
+We have an optimal outcome $o^*$ where item 1 is assigned to player 1,
+and item 2 is assigned to player 2.
+$o_{-1}^*$ will still assign item 2 to player 2,
+while $o_{-2}^*$ will assign item 2 to player 1.
+Then, player 1 pays 0, and player 2 pays 
+\[v_{12}-v_{11}=1>0\]
+The players pay different prices.
+
+\subsection{}
+No. The joint utility of two bidders $j,j'$ would be
+\begin{equation}
+\begin{aligned}
+    &\sum_i v_i(o')-\sum_{i\neq j} v_i(o_{-j}'')
+    + \sum_i v_i(o')-\sum_{i\neq j'} v_i(o_{-j'}''')\\
+    &=2\sum_i v_i(o')
+    -\left(\sum_{i\neq j} v_i(o_{-j}'') 
+    + \sum_{i\neq j'} v_i(o_{-j'}''')\right)
+\end{aligned}
+\end{equation}
+where $o',o'',o'''$ are the respective outcomes, 
+given the reports of bidders $j,j'$.
+Consider then an auction with 3 players and 1 item, 
+with player 1 and 2 cooperating, and the valuations
+\[v_1=v_3=2,v_2=1\]
+However, player 1 and 2 misreports their values, reporting
+a value of 3 for the item instead.
+In the optimal outcomes, $o^*,o_{-2}^*$ assigns the item to player 1 or 3,
+and $o_{-1}^*$ to player 3.
+The joint utility is
+\[2v_1-(v_3+v_2)=4-(2+2)=0\]
+With the misreported values however, 
+we have $o',o_{-2}'''$ only assigning to player 1, 
+and $o_{-1}''$ assigns to player 2.
+The joint utility is 
+\[2v_1-(v_1+v_2)=4-(1+2)=1\neq 0\]
+The bidders stand to gain joint utilty by not being truthful.
+
+\subsection{}
+No. Consider 3 players with valuations
+\[v_1=1,v_2=2,v_3=3\]
+With truthful reporting, player 2's utility is 0, since she does not win.
+By reporting a valuation $v'_2>3$, she can win the bid for a utility of
+\[v_2-v_1=1\]
+since the third-highest bid will be $v_1=1$.
+Clearly the auction is not truthful.
 
 \end{document}
