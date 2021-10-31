@@ -27,7 +27,8 @@ will be the least amount among all players.
 \newpage
 \subsection{}
 Suppose we have an EF outcome with players $i,i'$, rooms $j,j'$,
-with assignment $\sigma(i)=j, \sigma(i')=j'$.
+with assignment 
+\[\sigma(i)=j, \sigma(i')=j'\]
 Since the outcome is EF,
 \[v_{i\sigma(i)}-p_{\sigma(i)}\geq v_{ij'}-p_{j'}\]
 Since $v_{ij}=v_j$, and $\sigma(i)=j$,
@@ -83,11 +84,12 @@ the payment for each player is $0$ since the welfare of other
 players is the same whether or not each player is present.\\
 Consider $k>n$. 
 Suppose we have 2 successful bidders $j,j'$ for some optimal outcome $o^*$.
-In the optimal outcome, the items are assigned to the top $k$ player values.
+In the optimal outcome, the items are assigned to the top $k$ valuations
+by player.
 Then, if player $j$ is absent, there exists an optimal outcome $o_{-j}^*$
-where every player that was asssigned an item in $o^*$, including $j'$,
-is present, except for $j$, who would be replaced by 
-the top $(k+1)^{th}$ player value, say player $j''$, for the items.
+where every player that was assigned an item in $o^*$, including $j'$,
+is present, except for $j$, who would be replaced by the player with
+the top $(k+1)^{th}$ value, say player $j''$.
 This then implies that
 \begin{equation}
     v_{j'}(o^*)=v_{j'}(o_{-j}^*)
@@ -160,7 +162,7 @@ The joint utility is
 The bidders stand to gain joint utilty by not being truthful.
 
 \subsection{}
-No. Consider 3 players with valuations
+No. Consider 3 players and 1 item with valuations
 \[v_1=1,v_2=2,v_3=3\]
 With truthful reporting, player 2's utility is 0, since she does not win.
 By reporting a valuation $v'_2>3$, she can win the bid for a utility of
